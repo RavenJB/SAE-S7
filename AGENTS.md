@@ -10,7 +10,11 @@ Create an Architecture Decision Record (ADR) whenever choosing a technology to a
 
 ### Issue tracker
 
-Trello is the source of truth for issues and specs; access is manual. See `docs/agents/issue-tracker.md`.
+GitHub Issues is the source of truth for tickets. Trello provides a visual view of their progress. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Use the GitHub labels in `docs/agents/triage-labels.md`.
 
 ### Domain docs
 

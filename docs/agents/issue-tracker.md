@@ -1,15 +1,21 @@
-# Issue tracker: Trello
+# Issue tracker: GitHub
 
-Trello is the source of truth for issues and specs in this repo. GitHub hosts the code; do not create duplicate GitHub issues.
+[GitHub Issues for RavenJB/SAE-S7](https://github.com/RavenJB/SAE-S7/issues) is the source of truth for tickets, including scope, acceptance criteria, assignees, blockers, decisions and closure. Link the relevant mission specs from `spec/` in the issue body.
 
-## Conventions
+## GitHub workflow
 
-- Use one Trello card per work item.
-- Put the spec, scope, and acceptance criteria in the card description.
-- Use comments for discussion and decisions.
-- Use board lists to represent work status.
-- The board is not specified yet. Before acting on a card, ask the user for the board URL and relevant card or list.
-- Trello access is manual in this environment; no Trello connector or CLI is configured.
+- **Publish:** Create one issue per work item with `gh issue create --repo RavenJB/SAE-S7 --title "..." --body-file <file>`. Publish blockers first and apply the label requested by the skill.
+- **Fetch:** Read the issue and discussion with `gh issue view <number> --repo RavenJB/SAE-S7 --json number,title,body,labels,assignees,state,comments`.
+- **List:** Use `gh issue list --repo RavenJB/SAE-S7` with `--state`, `--assignee` or `--label` as needed.
+- **Link work:** Use native GitHub sub-issues and dependencies. In `gh` versions without the linking flags, use `gh api`. The `sub_issues` endpoint takes the child's numeric database ID as `sub_issue_id`. The `dependencies/blocked_by` endpoint takes the blocker's numeric database ID as `issue_id`. Get it with `gh api repos/RavenJB/SAE-S7/issues/<number> --jq .id`. If native links are unavailable, add `Part of #<parent>` or `Blocked by: #<blocker>` to the issue body. An issue is ready to start when its blockers are closed. [Sub-issues API](https://docs.github.com/en/rest/issues/sub-issues) · [Dependencies API](https://docs.github.com/en/rest/issues/issue-dependencies)
+- **Close:** Link the PR with `Closes #<number>` when its merge to the default branch completes the issue. For work without a PR, close the issue after recording the acceptance evidence.
 
-When a skill says "publish to the issue tracker", create a Trello card on the board and list the user identifies.
-When a skill says "fetch the relevant ticket", open the Trello card the user identifies.
+**PRs as a request surface: no.**
+
+## Trello visual tracking
+
+Use the [SAE S7 board](https://trello.com/b/Or6FywJJ/sae-s7) with four lists: `À faire`, `En cours`, `À valider`, `Terminé`.
+
+- Create the GitHub issue first. Add one Trello card named `#<number> <title>` with the GitHub issue URL. Reuse an existing card for the same issue.
+- Move the card as work starts, goes for review or is accepted. Move it to `Terminé` once the GitHub issue is closed. Keep detailed ticket updates on GitHub.
+- If Trello is unavailable, publish and update tickets on GitHub and catch up on the board when access returns.
