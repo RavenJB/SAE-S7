@@ -1,6 +1,6 @@
 ## Project brief
 
-For SAE project work, read `docs/SAE_Cyber_Valdore_Services.md` as the project brief. Its conversion contains damaged characters, so check `SAE_Cyber_Valdore_Services.pdf` when exact wording is unclear. Follow explicit requirements and constraints; treat examples and choices left open by the brief as design guidance, not mandates.
+Before working on the SAE project, read [the project brief](docs/SAE_Cyber_Valdore_Services.md). It is the source of truth for project context, requirements, constraints, deliverables, and validation criteria. Follow explicit requirements and constraints. Treat examples and choices left open by the brief as design guidance. Consult [the original PDF](SAE_Cyber_Valdore_Services.pdf) for its layout and page numbers.
 
 ## Architecture Decision Records
 

@@ -1,6 +1,6 @@
 # Spécifications des missions Valdoré Services
 
-Ces spécifications déclinent les dix missions du chapitre 5 du brief SAE. Le brief définit les consignes et livrables ; `bloc-competences.pdf` sert uniquement à préciser le sens de la compétence associée. Les niveaux de compétence du PDF ne remplacent pas la grille d’évaluation de la SAE.
+Ces spécifications déclinent les dix missions du chapitre 5 du [brief SAE](../docs/SAE_Cyber_Valdore_Services.md). Le brief définit les consignes et livrables ; `bloc-competences.pdf` sert uniquement à préciser le sens de la compétence associée. Les niveaux de compétence du PDF ne remplacent pas la grille d’évaluation de la SAE.
 
 | Mission | Compétence | Spécification |
 |---|---|---|
