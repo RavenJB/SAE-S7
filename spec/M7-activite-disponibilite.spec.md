@@ -1,10 +1,10 @@
 # M7 – Analyser l’activité et la disponibilité du SI
 
-Compétence : **BC 3.1 – Analyser une solution informatique et en mesurer les performances avec des outils et métriques adaptés.** Le référentiel associe l’analyse à des indicateurs couvrant notamment réseaux, systèmes, données et sécurité, ainsi qu’à l’interprétation des observations.
+Compétence : **[BC 3.1 – Analyser une solution informatique et en mesurer les performances avec des outils et métriques adaptés.](../docs/bloc-competences.md#bc-31---analyser-une-solution-informatique-et-en-mesurer-les-performances-en-utilisant-les-outils-et-métriques-adaptés-réseaux-systèmes-accès-aux-données-sécurité-etc)** Le référentiel associe l’analyse à des indicateurs couvrant notamment réseaux, systèmes, données et sécurité, ainsi qu’à l’interprétation des observations.
 
 ## Problématique
 
-La direction souhaite des éléments factuels sur l’usage des services, leur disponibilité, les accès et les événements de sécurité. Ces mesures alimentent l’optimisation M4 et l’audit M8.
+La direction souhaite savoir quels services sont utilisés, par qui et d’où, avec quelle disponibilité, et quels événements de sécurité surviennent. Ces mesures alimentent l’optimisation M4 et l’audit M8.
 
 ## Solution
 
@@ -15,9 +15,9 @@ Recenser les sources, choisir une dizaine de métriques, collecter des mesures p
 1. En tant que direction, je veux savoir quelles sources de mesure existent, afin de comprendre d’où viennent les constats.
 2. En tant qu’administrateur, je veux exploiter la supervision et les journaux pertinents, afin d’observer l’activité des services.
 3. En tant que direction, je veux une dizaine de métriques réparties entre réseau, systèmes, données et sécurité, afin d’avoir une vue équilibrée.
-4. En tant qu’administrateur, je veux mesurer la disponibilité et les temps de réponse, afin d’identifier les interruptions et lenteurs.
-5. En tant que responsable sécurité, je veux suivre les sessions VPN, échecs d’authentification et flux refusés, afin de repérer des événements inhabituels.
-6. En tant que responsable réseau, je veux mesurer latence, débit et volumes d’échange, afin d’observer l’usage entre zones et des partages.
+4. En tant qu’administrateur, je veux suivre la disponibilité et l’activité des services à l’aide des métriques retenues, afin d’identifier les interruptions et lenteurs.
+5. En tant que responsable sécurité, je veux observer les événements de sécurité, afin de repérer une activité inhabituelle.
+6. En tant que responsable réseau, je veux comprendre les usages du réseau et des partages, afin d’interpréter l’activité entre zones et l’accès aux données.
 7. En tant que lecteur, je veux connaître les conditions et la période de collecte, afin de juger si les données sont représentatives.
 8. En tant que lecteur, je veux voir l’analyse commentée d’une capture d’un échange choisi, afin de vérifier les protocoles et le chiffrement.
 9. En tant que direction, je veux une interprétation des anomalies et tendances, afin de décider des améliorations utiles.
@@ -25,17 +25,19 @@ Recenser les sources, choisir une dizaine de métriques, collecter des mesures p
 
 ## Décisions d’implémentation
 
-- Les sources à considérer incluent la supervision, les journaux du pare-feu, proxy et VPN, les événements de connexion AD et les journaux web, extranet et messagerie.
-- Une dizaine de métriques est choisie parmi les domaines indiqués dans le brief ; la liste finale reste à adapter à la maquette réellement déployée.
-- Une activité représentative est générée et collectée pendant au moins une séance.
-- La capture est limitée à un échange choisi sur la maquette et sert à vérifier protocoles et chiffrement, pas à capturer des données personnelles réelles.
+- Recenser les sources disponibles : supervision (V9), journaux du pare-feu, du proxy et du VPN, événements de connexion des contrôleurs de domaine et journaux du serveur web, de l’extranet et de la messagerie.
+- Choisir une dizaine de métriques adaptées à la maquette. Exemples : taux de disponibilité par service, temps de réponse, latence et débit entre zones, sessions VPN simultanées, volume des échanges sur les partages, sites les plus consultés et requêtes bloquées par le proxy, échecs d’authentification et flux refusés par le pare-feu.
+- Générer une activité représentative sur la maquette et collecter les métriques pendant au moins une séance.
+- Analyser avec Wireshark ou tcpdump la capture d’un échange de la maquette, par exemple une ouverture de session sur le domaine ou une connexion VPN, pour en vérifier les protocoles et le chiffrement (Q4). Utiliser les données fictives de la maquette.
+- Présenter les résultats dans un tableau de bord ou dans le rapport d’activité et de disponibilité à remettre.
 
 ## Décisions de test
 
 - Vérifier que les métriques couvrent réseau, systèmes, accès aux données et sécurité, et que leur source est identifiée.
-- Refaire une collecte représentative et vérifier que les valeurs présentées proviennent des sources nommées.
+- Vérifier que les valeurs présentées proviennent des sources indiquées et couvrent au moins une séance d’activité représentative sur la maquette.
+- Pour observer V7 et V9, s’appuyer sur les scénarios de recette du §4.4 : navigation d’un poste avec traces consultables et arrêt volontaire d’un service avec alerte visible dans la supervision.
 - Contrôler que la capture commentée identifie l’échange, les protocoles observés et le constat relatif au chiffrement.
-- Vérifier que le rapport présente valeurs, tendances, anomalies, interprétation et pistes transmises à M4.
+- Vérifier que la présentation des résultats inclut valeurs mesurées, tendances, anomalies et interprétation, et que les pistes d’amélioration ont été transmises à M4.
 
 ## Hors périmètre
 

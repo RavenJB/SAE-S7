@@ -1,6 +1,6 @@
 # M3 – Comparer et sélectionner les solutions
 
-Compétence : **BC 2.2 – Étudier, comparer et sélectionner les outils et méthodes nécessaires à la conception, au développement et au test d’une solution informatique.** Le référentiel demande d’identifier des options, de comparer leurs avantages et limites selon des critères liés au projet, puis de justifier la sélection.
+Compétence : **[BC 2.2 – Étudier, comparer et sélectionner les outils et méthodes nécessaires à la conception, au développement et au test d’une solution informatique.](../docs/bloc-competences.md#bc-22---etudier-comparer-et-sélectionner-les-outils-et-méthodes-nécessaires-à-la-conception-au-développement-et-au-test-dune-solution-informatique)** Le référentiel demande d’identifier des options, de comparer leurs avantages et limites selon des critères liés au projet, puis de justifier la sélection.
 
 ## Problématique
 
@@ -12,8 +12,8 @@ Réaliser des comparaisons structurées d’au moins cinq choix importants, pré
 
 ## Histoires utilisateur
 
-1. En tant que client, je veux voir plusieurs candidats pour chaque choix structurant, afin de comprendre les alternatives considérées.
-2. En tant que client, je veux que le pare-feu soit comparé entre OPNsense et pfSense CE, afin de justifier le choix imposé par le cahier des charges.
+1. En tant que client, je veux voir deux ou trois candidats pour chaque choix structurant étudié, afin de comprendre les alternatives considérées.
+2. En tant que client, je veux comparer OPNsense et pfSense CE, afin de justifier la sélection du pare-feu parmi les options autorisées par le cahier des charges.
 3. En tant que client, je veux comparer des plateformes de virtualisation, afin de comprendre leur adéquation aux ressources de la maquette.
 4. En tant que client, je veux comparer les solutions de sauvegarde et NAS, afin de comprendre comment les données critiques seront protégées.
 5. En tant que client, je veux comparer les solutions de supervision, afin de comprendre comment les équipements et services seront suivis.
@@ -26,14 +26,15 @@ Réaliser des comparaisons structurées d’au moins cinq choix importants, pré
 
 ## Décisions d’implémentation
 
-- L’étude couvre au moins cinq choix, avec les quatre domaines obligatoires du brief et au moins un domaine supplémentaire sélectionné dans la liste proposée.
+- L’étude couvre au moins cinq choix, avec les quatre domaines obligatoires et au moins un sujet supplémentaire parmi la messagerie, l’échange de documents avec les clients (V5), le proxy (V7), l’application d’extranet (V4) et la distribution Linux des serveurs.
+- Pour la virtualisation, le §4.1 autorise VirtualBox, VMware ou Proxmox, avec des réseaux virtuels isolés.
 - Chaque comparaison utilise une matrice avec critères, poids, notes et total ; les pondérations sont explicitées avant l’évaluation des candidats.
-- Les décisions respectent les contraintes du chapitre 4.1 et se rattachent aux besoins du chapitre 3.
-- Aucun candidat ni résultat de comparaison n’est préjugé par cette spécification.
+- Les critères couvrent les besoins du chapitre 3, les contraintes du §4.1, la sécurité (chiffrement, historique des vulnérabilités, intégration à l’annuaire), la durée de support, la compatibilité avec Active Directory et Cisco, les ressources consommées dans la maquette, la facilité d’exploitation par un administrateur unique et la qualité de la documentation.
+- L’étude justifie les solutions techniques (T1) et les choix d’architecture, comme la structure de la maquette et le découpage en zones (R1). L’équipe peut discuter de ses choix avec Maxime ou Jérôme lors des séances tuteurées.
 
 ## Décisions de test
 
-- Vérifier le nombre et la couverture obligatoire des comparaisons.
+- Vérifier le nombre et la couverture obligatoire des comparaisons ainsi que la présence de deux ou trois candidats par choix étudié.
 - Pour chaque matrice, contrôler que les poids, notes et totaux sont cohérents et que la conclusion découle des critères exposés.
 - Vérifier que les solutions écartées ont une raison documentée et que les contraintes de budget, licences et compatibilité sont traitées.
 - La revue orale de dix minutes constitue la validation de communication de cette étude.
@@ -46,4 +47,4 @@ Réaliser des comparaisons structurées d’au moins cinq choix importants, pré
 
 ## Notes complémentaires
 
-Livrables : matrices de choix et revue orale de dix minutes. Échéance : mi-projet, avant le déploiement des services.
+Livrables : matrices de choix dans un document intermédiaire et revue orale de dix minutes. Échéance : mi-projet, avant le déploiement des services.

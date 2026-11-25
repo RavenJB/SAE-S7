@@ -1,10 +1,10 @@
 # M9 – Suivre le projet et rendre compte au client
 
-Compétence : **BC 4.1 – Mettre en œuvre des outils d’analyse de la solution et des moyens de communication avec le client pour suivre les évolutions.** Le référentiel met l’accent sur le suivi régulier, la collecte des retours et leur prise en compte.
+Compétence : **[BC 4.1 – Mettre en œuvre des outils d’analyse de la solution et des moyens de communication avec le client pour suivre les évolutions.](../docs/bloc-competences.md#bc-41---mettre-en-œuvre-des-outils-danalyse-de-la-solution-informatique-et-des-solutions-de-communication-avec-le-client-pour-suivre-les-évolutions)** Le référentiel met l’accent sur le suivi régulier, la collecte des retours et leur prise en compte.
 
 ## Problématique
 
-Le directeur administratif et financier et le futur DSI veulent suivre l’avancement pendant le projet, faire remonter leurs demandes et comprendre l’état de l’infrastructure avant la soutenance.
+Thomas Girard, directeur administratif et financier et interlocuteur de l’équipe projet, et Justin Case veulent suivre l’avancement pendant le projet, faire remonter leurs demandes et comprendre l’état de l’infrastructure avant la soutenance.
 
 ## Solution
 
@@ -24,18 +24,19 @@ Mettre à jour les outils de suivi à chaque séance, tracer l’état des exige
 
 ## Décisions d’implémentation
 
-- Le README est mis à jour à la fin de chaque séance et précise travaux, contributeurs, état, difficultés et prochaines étapes.
-- Le tableau suit chaque exigence avec les états non commencée, en cours, réalisée ou validée ; une preuve accompagne chaque validation.
-- L’équipe choisit un outil partagé de tâches et demandes parmi les options du brief ou équivalent.
+- Le README du dépôt Git est mis à jour à la fin de chaque séance et précise les travaux et leurs auteurs, l’état des exigences, les difficultés rencontrées et les prochaines étapes.
+- Le tableau suit les exigences du chapitre 4 avec les états non commencée, en cours, réalisée ou validée. Une preuve (capture, test ou journal, par exemple) accompagne chaque validation.
+- L’équipe choisit et utilise un outil partagé, par exemple un tableau Kanban, les tickets d’un dépôt Git ou GLPI, pour planifier les tâches et tracer les demandes.
 - Un registre des échanges conserve date, demande, décision et prise en compte.
-- Le suivi de l’état technique s’appuie sur V9 et les mesures de M7 lorsqu’elles sont disponibles.
+- Présenter au client l’état de l’infrastructure à partir de la supervision (V9) et du rapport d’activité M7 dès qu’il est disponible.
 
 ## Décisions de test
 
 - Examiner les comptes rendus des séances pour vérifier la présence des informations demandées et leur actualisation.
-- Vérifier que chaque exigence validée dispose d’une preuve identifiable et que les états utilisent les catégories définies.
+- Vérifier que chaque exigence validée dispose d’une preuve identifiable et que les états utilisent les catégories définies. Réutiliser les preuves des scénarios de recette du §4.4 lorsqu’elles s’appliquent.
+- Vérifier que les tâches sont planifiées dans l’outil partagé et que les demandes y sont traçables.
 - Vérifier que demandes client, décisions et état de prise en compte sont traçables.
-- Observer les points de cinq minutes et confirmer qu’ils s’appuient sur des informations du SI mesurées lorsqu’elles sont disponibles.
+- Vérifier que le point de cinq minutes a lieu à chaque séance encadrée et que l’état technique présenté s’appuie sur la supervision et le rapport M7 dès qu’il est disponible.
 
 ## Hors périmètre
 
@@ -45,4 +46,4 @@ Mettre à jour les outils de suivi à chaque séance, tracer l’état des exige
 
 ## Notes complémentaires
 
-Livrables : README de séance, tableau de suivi des exigences et registre des échanges. Échéance : à chaque séance, tout au long du projet.
+Livrables : README de séance, tableau de suivi des exigences et registre des échanges avec le client. Échéance : à chaque séance, tout au long du projet.

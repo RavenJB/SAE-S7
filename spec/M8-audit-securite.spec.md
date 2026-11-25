@@ -1,10 +1,10 @@
 # M8 – Auditer, fiabiliser et sécuriser
 
-Compétence : **BC 3.5 – Fiabiliser et sécuriser.** Le référentiel couvre l’identification et l’évaluation des vulnérabilités, les mesures d’atténuation, la protection des actifs et la vérification de la résilience.
+Compétence : **[BC 3.5 – Fiabiliser et sécuriser.](../docs/bloc-competences.md#bc-35---fiabiliser-et-sécuriser)** Le référentiel couvre l’identification et l’évaluation des vulnérabilités, les mesures d’atténuation, la protection des actifs et la vérification de la résilience.
 
 ## Problématique
 
-Avant la présentation au client, l’équipe doit connaître les risques restants, vérifier la sécurité de la maquette et démontrer qu’un service peut être restauré après incident.
+Le marché de la Communauté d’agglomération Somme-Littoral comporte des clauses de sécurité. Avant la présentation au client, la direction demande un audit interne des vulnérabilités restantes, des mesures prises et de la capacité à reprendre après un incident.
 
 ## Solution
 
@@ -25,17 +25,17 @@ Réaliser une analyse de risques simplifiée, auditer uniquement la maquette, co
 
 ## Décisions d’implémentation
 
-- L’analyse s’inspire de la démarche EBIOS Risk Manager sans prétendre à une analyse exhaustive ou certifiante.
-- Les tests d’exposition et d’audit se limitent à la maquette, avec les familles d’outils citées dans le brief ou leurs équivalents open source retenus.
+- L’analyse simplifiée s’inspire d’EBIOS Risk Manager (ANSSI). Elle couvre les données clients, les données RH et la disponibilité des services. Pour chaque scénario de menace, elle indique les mesures correspondantes du cahier des charges. Le brief cite le rançongiciel, le hameçonnage, la compromission d’un compte VPN, la fuite de données et la panne d’un serveur.
+- L’audit open source couvre les ports et services exposés depuis l’Internet simulé et le réseau des postes, la recherche de vulnérabilités, l’annuaire et les serveurs Linux. Le brief cite respectivement Nmap, Greenbone OpenVAS, PingCastle et Lynis. Le périmètre se limite à la maquette.
 - Les corrections prioritaires s’appuient sur des recommandations ANSSI ou benchmarks CIS et sont suivies d’un nouvel audit.
-- Le test de restauration mesure la durée et la compare au délai de reprise du paragraphe 3.3 ; la protection des sauvegardes est examinée au regard de Q8.
+- Le test de restauration compare la durée mesurée au [délai de reprise du §3.3](../docs/SAE_Cyber_Valdore_Services.md#33-volumétrie-et-niveau-de-service) : quelques heures pour la messagerie, les dossiers et l’annuaire, une journée pour le reste. Vérifier la protection des sauvegardes contre l’effacement et le chiffrement selon Q8.
 
 ## Décisions de test
 
 - Vérifier que l’analyse relie biens, menaces et mesures de sécurité du cahier des charges.
-- Confirmer que les scans ont comme cible uniquement les systèmes de la maquette et que les résultats sont classés par gravité.
+- Vérifier que les quatre volets de l’audit couvrent uniquement la maquette et que les vulnérabilités sont classées par gravité.
 - Comparer les constats avant/après et vérifier les éléments de preuve des corrections.
-- Réaliser une restauration complète observée, mesurer sa durée et la comparer explicitement au délai toléré.
+- Restaurer intégralement au moins un serveur à partir des sauvegardes et consigner sa durée, la comparaison avec le délai toléré et le résultat de la vérification Q8. Pour la recette M10, vérifier aussi la restauration d’un dossier et d’un compte de l’annuaire prévue au §4.4.
 - Vérifier que le plan d’action couvre les vulnérabilités restantes avec les champs requis.
 
 ## Hors périmètre

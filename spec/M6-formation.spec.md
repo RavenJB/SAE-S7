@@ -1,6 +1,6 @@
 # M6 – Former les utilisateurs
 
-Compétence : **BC 4.5 – Former l’utilisateur à l’usage de la solution informatique.** Le référentiel couvre la formation aux tâches essentielles, la création de supports adaptés, les réponses aux questions et l’adaptation aux besoins des utilisateurs.
+Compétence : **[BC 4.5 – Former l’utilisateur à l’usage de la solution informatique.](../docs/bloc-competences.md#bc-45---former-lutilisateur-à-lusage-de-la-solution-informatique)** Le référentiel couvre la formation aux tâches essentielles, la création de supports adaptés, les réponses aux questions et l’adaptation aux besoins des utilisateurs.
 
 ## Problématique
 
@@ -17,7 +17,7 @@ Fournir un guide court pour les salariés, une fiche pour les clients et un supp
 3. En tant que salarié, je veux comprendre à quels dossiers j’ai accès, afin de retrouver les ressources autorisées sans compromettre celles des autres.
 4. En tant que salarié, je veux utiliser la messagerie et le webmail selon les consignes, afin de communiquer au bureau et à distance.
 5. En tant que télétravailleur, je veux suivre les étapes de connexion VPN, afin d’accéder uniquement aux ressources nécessaires.
-6. En tant que salarié, je veux connaître les bons réflexes face à un poste laissé ouvert ou à un courriel suspect, afin de réduire les risques courants.
+6. En tant que salarié, je veux savoir quand verrouiller mon poste et comment réagir face à un courriel suspect, afin de réduire les risques courants.
 7. En tant que salarié, je veux savoir qui contacter en cas de problème, afin d’obtenir de l’aide.
 8. En tant que client, je veux savoir comment accéder à l’extranet et déposer ou récupérer un document, afin d’échanger avec Valdoré Services.
 9. En tant que participant, je veux suivre une session de formation courte et structurée, afin d’apprendre les actions essentielles.
@@ -26,17 +26,17 @@ Fournir un guide court pour les salariés, une fiche pour les clients et un supp
 
 ## Décisions d’implémentation
 
-- Le guide salarié fait deux à quatre pages et inclut des captures de la maquette et les thèmes prescrits.
+- Le guide salarié fait deux à quatre pages. Il illustre les parcours par des captures de la maquette et présente les règles de mot de passe appliquées (Q5).
 - La fiche client traite l’accès à l’extranet et les échanges de documents.
-- Le support permet une session de dix minutes ; la vidéo de trois minutes maximum ou la FAQ est souhaitable.
-- Une fiche de passation figure parmi les livrables finaux, conformément au tableau de synthèse du brief.
+- Préparer un support pour animer une session de formation de dix minutes.
+- Une vidéo de démonstration de trois minutes au plus ou une FAQ est souhaitable.
 
 ## Décisions de test
 
 - Vérifier la longueur du guide, les captures et la couverture des thèmes imposés.
-- Faire suivre les parcours à une personne correspondant à chaque public : salarié, client et futur administrateur ; relever les points qui empêchent d’accomplir une tâche.
+- Rejouer les parcours décrits sur la maquette dans les rôles de salarié, de client et de futur administrateur. Relever les étapes manquantes ou imprécises.
 - Vérifier que les consignes de droits, de mot de passe et de VPN correspondent au comportement réellement observé dans la maquette.
-- Observer la session de formation et vérifier qu’elle tient dans les dix minutes prévues.
+- Observer la session en soutenance pour vérifier l’usage du support et le respect des dix minutes prévues.
 
 ## Hors périmètre
 
@@ -46,4 +46,4 @@ Fournir un guide court pour les salariés, une fiche pour les clients et un supp
 
 ## Notes complémentaires
 
-Livrables : guide salarié, fiche client, fiche de passation et session de formation. Échéance : rapport final et soutenance.
+Le guide salarié, la fiche client et la fiche de passation figurent en annexe du rapport final. La session de formation se tient en soutenance.

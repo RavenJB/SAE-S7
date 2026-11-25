@@ -1,10 +1,10 @@
-# M1 – Présenter le projet en anglais
+# M1 – Présenter une partie du projet en anglais
 
-Compétence : **BC 1.7 – Soutenir un échange courant et/ou technique dans un contexte international et multiculturel.** Le référentiel associe cette compétence à la compréhension et à la présentation d’un projet ou sujet technique, ainsi qu’à l’expression d’un avis et à la comparaison de possibilités selon le niveau atteint. La mission demande une synthèse et une prise de parole en anglais ; elle n’impose pas de viser les niveaux supérieurs.
+Compétence : **[BC 1.7 – Soutenir un échange courant et/ou technique dans un contexte international et multiculturel.](../docs/bloc-competences.md#bc-17---soutenir-un-échange-courant-etou-technique-dans-un-contexte-international-et-multiculturel)** Le référentiel associe cette compétence à la compréhension et à la présentation d’un projet ou sujet technique, ainsi qu’à l’expression d’un avis et à la comparaison de possibilités selon le niveau atteint. La mission demande une synthèse et une prise de parole en anglais ; elle n’impose pas de viser les niveaux supérieurs.
 
 ## Problématique
 
-Le futur DSI est anglophone et doit comprendre le contexte, l’architecture proposée, les mesures de sécurité, les limites de la maquette et les suites envisagées. Une présentation uniquement francophone ne permettrait pas cet échange.
+Le futur DSI, anglophone, est invité à la soutenance. Il doit comprendre le contexte, l’architecture retenue, les mesures de sécurité, les limites de la maquette et les suites envisagées.
 
 ## Solution
 
@@ -30,7 +30,7 @@ Produire une synthèse exécutive en anglais d’une à deux pages, annexée au 
 
 ## Décisions de test
 
-- Vérifier la longueur et la présence de chacun des cinq thèmes imposés dans le résumé.
+- Vérifier que le résumé est rédigé en anglais, figure en annexe du rapport final, tient sur une à deux pages et couvre les cinq thèmes demandés.
 - Relecture linguistique et vérification de cohérence des termes avec le projet.
 - Observer pendant la soutenance que la diapositive est présentée en anglais et que l’intervenant peut expliquer le contenu technique.
 - Les preuves sont les livrables et l’observation orale ; aucun module logiciel n’est à tester pour cette mission.
