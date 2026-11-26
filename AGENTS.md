@@ -6,6 +6,10 @@ Before working on the SAE project, read [the project brief](docs/SAE_Cyber_Valdo
 
 Create an Architecture Decision Record (ADR) whenever choosing a technology to achieve a specific goal. Document the decision, the alternatives considered, and the rationale; for example, choosing OpenVPN for remote workers instead of a paid VPN service requires an ADR.
 
+## Project timeline
+
+At the end of each work session, add or update that day's entry in [docs/chronologie.md](docs/chronologie.md). Summarize only the work completed that day, without attributing it to anyone.
+
 ## Agent skills
 
 ### Issue tracker
