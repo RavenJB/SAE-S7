@@ -1,30 +1,34 @@
-# ADR-0004 – Supervision
+# ADR-0004 – Choisir la solution de supervision
 
-Statut : proposé.
-Date : 2026-11-26.
+**Statut** : proposé · **Date de proposition** : 2026-11-26
 
-## Contexte
+## Contexte et critères décisifs
 
-La maquette doit superviser équipements Cisco, pare-feu, serveurs Windows/Linux et services, conserver des journaux exploitables et produire des alertes en cas d’indisponibilité. L’administration est assurée par une seule personne dans le contexte fictif.
+Un seul administrateur doit suivre la disponibilité des équipements Cisco, du pare-feu, des serveurs Windows/Linux et des services, avec alertes (V9). L’intégration SNMP et agents, la charge d’exploitation et le support de la version (Q6) départagent les options.
 
-## Décision proposée
+## Options étudiées
 
-Retenir Zabbix 8.0 LTS avec SNMP pour le réseau, agent pour les serveurs, sondes de service et seuils adaptés à la maquette. Le cycle de vie officiel annonce une prise en charge limitée jusqu’au 30 novembre 2031.
+| Option | Atouts | Limites |
+| --- | --- | --- |
+| Zabbix 8.0 LTS (4,80/5) | SNMP, agents, sondes, seuils, tableaux de bord et alertes dans le même outil. | Serveur et base de données à dimensionner et maintenir. |
+| Prometheus + Grafana (3,95/5) | Collecte de métriques modulable et meilleure note de ressources dans M3. | Exporters et Alertmanager à intégrer avec Grafana pour couvrir le périmètre. |
+| Nagios Core (3,70/5) | Contrôles de disponibilité extensibles par plugins. | Plugins, seuils et vues demandent davantage de configuration manuelle. |
 
-## Alternatives
+## Décision proposée et justification
 
-Prometheus avec Grafana : robuste et léger, avec modèle de métriques et alertes composables, mais les exporters et l’assemblage des composants demandent du temps supplémentaire.
-
-Nagios Core : solution libre et extensible par plugins, mais la configuration des plugins, des vues et des alertes est davantage manuelle.
+Proposer **Zabbix 8.0 LTS**. La couverture du parc et l’exploitation par une seule personne compensent la charge du serveur et de sa base. L’éditeur indique un support complet jusqu’au 30 novembre 2029 et un support limité jusqu’au 30 novembre 2031.
 
 ## Conséquences
 
-Installer le serveur sur un Linux maintenu et sauvegarder sa base de données et sa configuration. Restreindre SNMPv3 et les flux d’agents au VLAN de supervision. Revoir la version au moment du déploiement si le calendrier change.
+- Prévoir les agents Windows/Linux, le suivi SNMPv3 sur les équipements compatibles et des sondes pour les services. Restreindre les flux de collecte aux sources et destinations nécessaires.
+- Sauvegarder la base et la configuration. Dimensionner la rétention des métriques pour M4 et M7. La conservation des journaux (Q7) reste à traiter dans l’exploitation, avec centralisation souhaitable (Q9).
 
-## Sources
+## Validation avant arbitrage
 
-https://www.zabbix.com/documentation/8.0/en/manual/introduction
-https://www.zabbix.com/documentation/8.0/en/manual/config/items/itemtypes/snmp
-https://www.zabbix.com/life_cycle_and_release_policy
-https://prometheus.io/docs/introduction/overview/
-https://github.com/NagiosEnterprises/nagioscore
+Vérifier la collecte sur les équipements prêtés et les serveurs représentatifs, les ressources de la VM et la version maintenue disponible. Provoquer l’arrêt contrôlé d’un service de la maquette et vérifier l’alerte et le retour à l’état normal.
+
+## Références et décisions liées
+
+- [Matrice M3 de supervision](../missions/M3-choix-solutions.md#choix-4--supervision--zabbix-prometheus-avec-grafana-nagios-core) et [dossier M2, R20 à R22](../missions/M2-dossier-documentaire.md#supervision).
+- [ADR-0001 – Pare-feu](ADR-0001-pare-feu.md) pour les flux de collecte et [ADR-0003 – Sauvegarde](ADR-0003-nas-sauvegarde.md) pour la base et la configuration.
+- [Politique de support Zabbix](https://www.zabbix.com/life_cycle_and_release_policy) et [documentation SNMP](https://www.zabbix.com/documentation/8.0/en/manual/config/items/itemtypes/snmp).

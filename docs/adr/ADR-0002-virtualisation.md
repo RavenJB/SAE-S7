@@ -1,28 +1,34 @@
-# ADR-0002 – Plateforme de virtualisation
+# ADR-0002 – Choisir la plateforme de virtualisation
 
-Statut : proposé sous condition de disponibilité d’un serveur scolaire dédié.
-Date : 2026-11-26.
+**Statut** : proposé · **Date de proposition** : 2026-11-26
 
-## Contexte
+## Contexte et critères décisifs
 
-La maquette comporte de nombreuses zones virtuelles raccordées à un pare-feu et, si possible, au Catalyst 3750. Le brief autorise VirtualBox, VMware ou Proxmox VE et indique que des serveurs de l’école peuvent héberger une partie des machines. Ce matériel n’est pas encore attribué.
+La maquette doit héberger plusieurs VM, isoler leurs réseaux et se raccorder aux équipements Cisco (R1–R4, S5). L’isolation et la souplesse des VLAN pèsent le plus dans M3. Le choix dépend aussi des ressources et des droits d’administration que l’école fournira.
 
-## Décision proposée
+## Options étudiées
 
-Retenir Proxmox VE si un hôte dédié et son accès d’administration sont fournis. Ses bridges, VLAN 802.1Q, pare-feu et fonctions de sauvegarde sont adaptés à une maquette multi-VM raccordée à des équipements réels.
+| Option | Atouts | Limites |
+| --- | --- | --- |
+| Proxmox VE (4,65/5) | Ponts Linux, VLAN 802.1Q et gestion centralisée des VM et de leurs sauvegardes. | Hôte dédié et accès d’administration nécessaires pour ce scénario. Prise en main plus exigeante. |
+| VirtualBox (3,90/5) | Exploitation plus simple sur un poste selon M3, réseaux internes et ponts. | Passage du trunk VLAN jusqu’au Catalyst à vérifier avec la carte réseau et l’OS hôte. |
+| VMware Workstation Pro (3,90/5) | Hyperviseur de poste de travail sans coût de licence, mieux noté que VirtualBox pour l’isolation et les VLAN. | Moins bien noté que VirtualBox pour les ressources et la simplicité sur poste dans le scénario étudié. |
 
-## Alternatives
+## Décision proposée et justification
 
-VirtualBox est le choix de repli sur poste de travail : libre, facile d’accès, et doté de réseaux internes, Host-only, NAT et bridged. Le passage de trunks VLAN vers une carte physique reste à valider.
-
-VMware Workstation Pro est gratuit pour les usages commerciaux, éducatifs et personnels depuis l’annonce officielle de novembre 2024. Il fonctionne sur poste de travail, mais ne propose pas ici un avantage décisif par rapport aux deux autres candidats.
+Proposer **Proxmox VE** si l’école fournit un hôte dédié administrable. La matrice privilégie ses ponts, le raccordement VLAN et la gestion de plusieurs VM. Si l’hôte manque, évaluer **VirtualBox** en premier sur poste pour sa simplicité et sa note de ressources. Les deux candidats de repli sont à égalité au score global et le raccordement au Catalyst peut les départager.
 
 ## Conséquences
 
-Le choix n’est pas définitif tant que l’hôte scolaire n’est pas confirmé. Avant le déploiement, mesurer les ressources disponibles et tester l’isolation des réseaux. En l’absence de serveur, rouvrir cet ADR et la matrice M3, et choisir un hyperviseur de poste de travail.
+- L’hôte dédié centralise les VM et leurs réseaux. Une panne de cet hôte peut arrêter plusieurs services à la fois.
+- Un repli sur poste change le câblage virtuel et les procédures de déploiement. Versionner ces procédures et les configurations pour rejouer la recette après une migration.
 
-## Sources
+## Validation avant arbitrage
 
-https://pve.proxmox.com/pve-docs/pve-admin-guide.pdf
-https://download.virtualbox.org/virtualbox/7.2.10/UserManual.pdf
-https://blogs.vmware.com/cloud-foundation/2024/11/11/vmware-fusion-and-workstation-are-now-free-for-all-users/
+Confirmer l’accès à la console, le budget CPU/RAM/disque et les interfaces physiques. Tester le trunk jusqu’au Catalyst et l’isolement entre zones et vis-à-vis des réseaux externes à la maquette. Sans hôte dédié, réexaminer la matrice avec les contraintes du poste réellement disponible.
+
+## Références et décisions liées
+
+- [Matrice M3 de virtualisation](../missions/M3-choix-solutions.md#choix-2--virtualisation--proxmox-ve-virtualbox-vmware-workstation-pro).
+- [ADR-0001 – Pare-feu](ADR-0001-pare-feu.md) pour les interfaces et VLAN et [ADR-0003 – Sauvegarde](ADR-0003-nas-sauvegarde.md) pour le stockage dédié.
+- [Guide Proxmox VE](https://pve.proxmox.com/pve-docs/pve-admin-guide.pdf), [manuel VirtualBox](https://download.virtualbox.org/virtualbox/7.2.10/UserManual.pdf) et [licence de VMware Workstation Pro](https://blogs.vmware.com/cloud-foundation/2024/11/11/vmware-fusion-and-workstation-are-now-free-for-all-users/).

@@ -1,29 +1,34 @@
-# ADR-0005 – Messagerie de la maquette
+# ADR-0005 – Choisir la messagerie de la maquette
 
-Statut : proposé, sous réserve de test d’intégration AD/LDAP.
-Date : 2026-11-26.
+**Statut** : proposé · **Date de proposition** : 2026-11-26
 
-## Contexte
+## Contexte et critères décisifs
 
-Chaque salarié a une adresse `prenom.nom@valdore-services.fr` et doit pouvoir envoyer/recevoir des courriels depuis un client ou un webmail. La maquette simule les échanges externes et ne doit pas se connecter à Internet sans validation. Aucun achat n’est possible.
+Chaque salarié doit pouvoir échanger du courrier avec une adresse `prenom.nom@valdore-services.fr` via un client ou le webmail, y compris avec un correspondant sur l’Internet simulé (V3). Les critères les plus discriminants sont les ressources, l’exploitation et l’intégration à l’AD. L’authentification via l’annuaire est souhaitable (V10) et les logiciels déployés doivent rester maintenus (Q6).
 
-## Décision proposée
+## Options étudiées
 
-Retenir Modoboa pour l’évaluation initiale. La documentation 2.4.9 donne une base de 2 CPU, 2 Go de RAM et 10 Go de disque, ou 4 Go de RAM si l’antivirus est activé. La documentation décrit l’authentification LDAP. Il faut tester le bind LDAP chiffré vers l’AD et prévoir un processus explicite pour les changements et suppressions de comptes, car Modoboa ne synchronise pas automatiquement ces changements.
+| Option | Atouts | Limites |
+| --- | --- | --- |
+| Modoboa (4,25/5, notation initiale) | Console d’administration intégrée et authentification LDAP documentée. | La documentation courante indique 4 CPU, 4 Go de RAM et 10 Go de disque. Le cycle de vie des comptes locaux doit être vérifié avec AD. |
+| Mailu (4,15/5, note établie sur 2.0) | Suite conteneurisée, bien notée pour les ressources dans M3. La branche stable documentée est 2024.06. | Réévaluer la note de maintenance et confirmer l’intégration AD sur cette branche. |
+| mailcow (4,10/5) | Intégration LDAP/AD et sauvegarde documentées. | La configuration par défaut demande au moins 6 Gio de RAM et 1 Gio de swap. |
 
-## Alternatives
+## Décision proposée et justification
 
-Mailu 2.0 : stack complète, libre, légère selon la configuration antivirus ; la documentation précise que les versions stables anciennes ne reçoivent plus les correctifs et préconise de ne pas rester sur une branche ancienne.
-
-mailcow : stack complète, webmail, fonctions de sécurité, LDAP/AD et procédures de sauvegarde ; plus riche, mais 6 Gio de RAM et 1 Gio de swap minimum dans la configuration par défaut.
+Évaluer **Modoboa** en premier pour son administration intégrée et son authentification LDAP documentée. Son avance initiale est de 0,10 point. Une hausse d’un point de la note de maintenance de Mailu suffirait à l’annuler, à notes égales par ailleurs. Les prérequis révisés de Modoboa peuvent aussi peser sur la note de ressources. L’arbitrage dépend de la mise à jour de ces critères et des essais sur la maquette.
 
 ## Conséquences
 
-La décision reste conditionnelle à un test LDAP, au dimensionnement réel et à la validation de l’équipe enseignante. La recette couvrira SMTP interne, envoi vers un serveur externe simulé, IMAP/Webmail, TLS et restauration de boîtes. Le DNS de laboratoire, les certificats et les ports seront simulés/isolés ; aucun trafic de courrier réel ne doit partir vers Internet.
+- Prévoir une procédure de création, modification et désactivation des boîtes. L’authentification LDAP et la synchronisation des comptes sont deux fonctions distinctes. La synchronisation optionnelle est documentée avec OpenLDAP. Son comportement avec Active Directory reste à vérifier.
+- Maintenir le courrier dans les réseaux autorisés de la maquette, prévoir TLS et des exports restaurables. Un changement de solution peut imposer une reprise des boîtes et de la configuration de messagerie.
 
-## Sources
+## Validation avant arbitrage
 
-https://modoboa.readthedocs.io/en/latest/installation/requirements.html
-https://modoboa.readthedocs.io/en/2.4.2/configuration.html
-https://mailu.io/2.0/setup.html
-https://docs.mailcow.email/getstarted/prerequisite-system/
+Revoir les notes de ressources et de maintenance avec les versions évaluées. Tester SMTP interne et vers un correspondant externe simulé, IMAP, webmail, TLS et restauration d’une boîte. Pour l’intégration AD, vérifier la connexion LDAP chiffrée et le comportement après modification ou désactivation du compte.
+
+## Références et décisions liées
+
+- [Matrice M3 de messagerie](../missions/M3-choix-solutions.md#choix-5--messagerie--modoboa-mailu-mailcow) et [dossier M2, R23 à R25](../missions/M2-dossier-documentaire.md#messagerie).
+- [ADR-0001 – Pare-feu](ADR-0001-pare-feu.md) pour les flux autorisés et [ADR-0003 – Sauvegarde](ADR-0003-nas-sauvegarde.md) pour les exports et la restauration.
+- [Prérequis Modoboa](https://modoboa.readthedocs.io/en/latest/installation/requirements.html), [configuration LDAP Modoboa](https://modoboa.readthedocs.io/en/latest/configuration.html#ldap), [version stable Mailu](https://mailu.io/2024.06/setup.html#pick-a-mailu-version) et [prérequis mailcow](https://docs.mailcow.email/getstarted/prerequisite-system/).

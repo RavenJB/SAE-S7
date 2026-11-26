@@ -1,31 +1,33 @@
-# ADR-0001 – Pare-feu de la maquette
+# ADR-0001 – Choisir le pare-feu de la maquette
 
-Statut : proposé, à confirmer sur les ressources de la maquette.
-Date : 2026-11-26.
+**Statut** : proposé · **Date de proposition** : 2026-11-26
 
-## Contexte
+## Contexte et critères décisifs
 
-Le cahier des charges impose OPNsense ou pfSense CE et exige OpenVPN, le cloisonnement en zones, NAT, journalisation et publication limitée des services. Aucun achat n’est autorisé. Les ressources de l’hôte ne sont pas encore connues.
+Le cahier des charges limite le choix à OPNsense et pfSense CE, sans achat. Le pare-feu doit cloisonner les VLAN avec le Catalyst 3750, publier les seuls services prévus, journaliser les accès et fournir OpenVPN aux télétravailleurs (R4–R6, Q1–Q4, Q7). Les ressources allouables restent à confirmer.
 
-## Décision proposée
+## Options étudiées
 
-Évaluer pfSense CE en premier sur la maquette, avec OPNsense comme alternative de secours. Le comparatif M3 donne un léger avantage provisoire à pfSense CE pour le dimensionnement initial et la documentation. Les deux solutions satisfont le besoin fonctionnel attendu.
+| Option | Atouts | Limites |
+| --- | --- | --- |
+| pfSense CE (4,65/5) | Filtrage, NAT, OpenVPN, VLAN et documentation d’exploitation détaillée. | Disponibilité de l’image CE et dimensionnement à vérifier. Netgate publie un minimum d’installation de 1 Go de RAM et 8 Go de disque. |
+| OPNsense (4,60/5) | Même couverture fonctionnelle attendue, historique des changements et meilleure note de sécurité et maintenance dans M3. | Les 4 Go de RAM indiqués par OPNsense correspondent au profil raisonnable pour l’ensemble des fonctions standard. |
 
-## Alternatives
+## Décision proposée et justification
 
-OPNsense : solution libre avec filtrage stateful, VLAN, OpenVPN, proxy et sauvegardes de configuration documentés. Son guide indique 4 Go comme configuration raisonnable pour toutes les fonctions standard.
-
-pfSense CE : solution imposée comme choix permis par le brief, avec OpenVPN, VLAN, NAT, filtrage stateful et documentation détaillée. Le minimum publié de 1 Go/8 Go disque n’est pas considéré comme une taille recommandée pour la charge.
-
-Solutions payantes ou VPN externes : rejetées car hors contraintes explicites du brief.
+Évaluer **pfSense CE** en premier. La matrice lui donne 0,05 point d’avance grâce aux notes de documentation et de ressources, malgré la meilleure note de maintenance d’OPNsense. Les chiffres éditeurs portent sur des périmètres différents. Le gain de ressources reste une hypothèse à vérifier à périmètre égal.
 
 ## Conséquences
 
-Créer des règles par zone, appliquer le refus par défaut, documenter les flux autorisés, utiliser des comptes d’administration nominatifs, exporter les journaux et sauvegarder la configuration. Tester le débit OpenVPN et les ressources avant de figer le choix. Si l’image CE ou les ressources disponibles ne conviennent pas, remplacer la décision par OPNsense et consigner l’écart.
+- Dans l’architecture proposée, centraliser le filtrage entre zones sur le pare-feu et documenter les flux autorisés. Prévoir l’administration nominative, la conservation des journaux et la sauvegarde de la configuration.
+- Un seul pare-feu porte le routage inter-VLAN et le VPN dans la maquette. Son indisponibilité coupe ces accès et un changement de produit impose de transposer les règles et de rejouer la recette.
 
-## Sources
+## Validation avant arbitrage
 
-https://docs.netgate.com/pfsense/en/latest/hardware/minimum-requirements.html
-https://docs.netgate.com/pfsense/en/latest/hardware/size.html
-https://docs.opnsense.org/manual/hardware.html
-https://docs.opnsense.org/manual/vpnet.html
+Vérifier l’image CE, le trunk VLAN, l’isolation des zones, l’export des journaux et les droits du télétravailleur. Tester le VPN avec les ressources disponibles, puis mesurer son débit en charge dans M4. Si pfSense CE échoue à l’essai, évaluer OPNsense sur les mêmes critères avant de proposer la bascule.
+
+## Références et décisions liées
+
+- [Matrice M3 du pare-feu](../missions/M3-choix-solutions.md#choix-1--pare-feu--opnsense-ou-pfsense-ce) et [architecture réseau proposée](../missions/M3-choix-solutions.md#proposition-darchitecture-réseau-liée-à-ces-choix).
+- [ADR-0002 – Virtualisation](ADR-0002-virtualisation.md) pour le raccordement des VLAN et [ADR-0004 – Supervision](ADR-0004-supervision.md) pour le suivi du pare-feu.
+- [Dimensionnement pfSense](https://docs.netgate.com/pfsense/en/latest/hardware/size.html), [minimums pfSense](https://docs.netgate.com/pfsense/en/latest/hardware/minimum-requirements.html), [dimensionnement OPNsense](https://docs.opnsense.org/manual/hardware.html) et [VPN OPNsense](https://docs.opnsense.org/manual/vpnet.html).

@@ -1,33 +1,34 @@
-# ADR-0003 – NAS et logiciel de sauvegarde
+# ADR-0003 – Choisir le NAS et la solution de sauvegarde
 
-Statut : proposé, à confirmer selon l’espace de stockage disponible.
-Date : 2026-11-26.
+**Statut** : proposé · **Date de proposition** : 2026-11-26
 
-## Contexte
+## Contexte et critères décisifs
 
-Les données critiques doivent être sauvegardées chaque nuit sur un NAS et une restauration de fichiers et de compte Active Directory doit être démontrée. Le RPO maximal est la journée de travail précédente. Les sauvegardes doivent résister à la suppression ou au chiffrement par un compte compromis.
+Sauvegarder chaque nuit l’annuaire, les dossiers, les bases et la messagerie sur un NAS dédié (V8). La perte admissible est limitée à la journée de travail précédente (§3.3). La protection des copies contre l’effacement ou le chiffrement (Q8), la restauration et le budget de ressources guident le choix.
 
-## Décision proposée
+## Options étudiées
 
-Utiliser OpenMediaVault comme cible NAS et Restic pour créer des dépôts chiffrés depuis les postes/serveurs Linux et Windows. Héberger rest-server en mode append-only dans un conteneur ou une VM Linux dédiée qui écrit dans un espace NAS limité ; utiliser un compte de sauvegarde restreint, réserver les opérations de suppression/maintenance à un autre compte et surveiller les quotas. Pour Active Directory, utiliser Windows Server Backup pour le backup cohérent de l’état du système, puis protéger sa destination sur le NAS par des droits séparés. Les services de base de données et de messagerie devront exporter leurs données de façon cohérente avant la sauvegarde des fichiers.
+| Option | Atouts | Limites |
+| --- | --- | --- |
+| OpenMediaVault + Restic/rest-server (4,45/5) | Administration du NAS par interface, sauvegarde chiffrée Windows/Linux et accès en ajout seul au dépôt. | Le dépôt, ses accès et sa maintenance sont à exploiter séparément du NAS. |
+| TrueNAS CE (4,25/5) | SMB, intégration AD, instantanés ZFS et réplication. | Le guide demande au moins 8 Go de RAM et des supports distincts pour démarrer et stocker les données. La protection des copies dépend des droits sur les instantanés et les répliques. |
+| Debian + Restic/rest-server (4,10/5) | Même protection de dépôt dans la matrice et meilleure note de ressources. | Plus de configuration et d’exploitation manuelles pour l’administrateur. |
 
-## Alternatives
+## Décision proposée et justification
 
-TrueNAS Community Edition fournit SMB, intégration AD, ZFS, snapshots et réplication, mais son guide de matériel demande au moins 8 Go de RAM et un support de démarrage et stockage dédiés.
-
-Debian avec Restic/rest-server est plus minimal et peu consommateur, mais demande davantage de configuration manuelle qu’un NAS administré par interface.
-
-BorgBackup offre également chiffrement et append-only, mais le scénario retenu utilise Restic pour sauvegarder directement Windows et exploiter VSS.
+Proposer **OpenMediaVault** comme NAS et **Restic avec rest-server en mode append-only** pour le dépôt chiffré. Cette combinaison obtient la meilleure note pondérée en conciliant protection, ressources et simplicité. Le service rest-server tournerait dans un conteneur ou une VM Linux dédiée avec un espace limité sur le NAS. BorgBackup a aussi été documenté en M2 (R18). Restic est privilégié pour ses clients Windows et Linux et son usage de VSS sous Windows.
 
 ## Conséquences
 
-Append-only empêche la suppression/modification à travers le compte de dépôt, mais ne protège pas contre le remplissage du stockage, la compromission de l’administration du NAS, la panne du support ou la perte de la clé. Quotas, séparation d’identifiants, sauvegarde de la clé, contrôle d’intégrité et exercices de restauration sont obligatoires. Une copie hors ligne sera ajoutée si le matériel fourni le permet. Restic ne remplace pas Windows Server Backup pour restaurer l’état système du contrôleur de domaine.
+- Le compte de dépôt peut ajouter des copies. La maintenance exige un accès distinct réservé à l’administration. Prévoir des quotas, une alerte d’espace, une copie de récupération de la clé et des contrôles d’intégrité. La panne du NAS et la compromission de son administrateur restent des risques. Ajouter une copie hors ligne si le matériel le permet.
+- Sauvegarder l’état système du contrôleur de domaine avec Windows Server Backup et protéger cet export sur le NAS avec des droits séparés. Préparer des exports cohérents des bases et de la messagerie et les inclure aux sauvegardes nocturnes.
 
-## Sources
+## Validation avant arbitrage
 
-https://docs.openmediavault.org/en/stable/prerequisites.html
-https://restic.readthedocs.io/en/stable/040_backup.html
-https://github.com/restic/rest-server
-https://www.truenas.com/docs/scale/gettingstarted/tnhardwareguide/
-https://borgbackup.readthedocs.io/en/stable/usage/init.html
-https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-backing-up-system-state
+Confirmer le stockage disponible, le temps de sauvegarde sur la plage 20 h–7 h et le refus de suppression via le compte de dépôt. En recette, restaurer un dossier et un compte AD (§4.4). Chronométrer aussi la restauration complète d’un serveur en M8 et la comparer au délai de reprise du §3.3.
+
+## Références et décisions liées
+
+- [Matrice M3 du NAS et des sauvegardes](../missions/M3-choix-solutions.md#choix-3--nas-et-sauvegarde--truenas-ce-openmediavault-avec-restic-debian-avec-restic) et [dossier M2, R13 à R19](../missions/M2-dossier-documentaire.md#stockage-et-sauvegardes).
+- [ADR-0002 – Virtualisation](ADR-0002-virtualisation.md) pour le stockage et [ADR-0005 – Messagerie](ADR-0005-messagerie.md) pour les boîtes à restaurer.
+- [Maintenance Restic en mode append-only](https://restic.readthedocs.io/en/stable/060_forget.html#security-considerations-in-append-only-mode) et [sauvegarde de l’état système AD](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-backing-up-system-state).

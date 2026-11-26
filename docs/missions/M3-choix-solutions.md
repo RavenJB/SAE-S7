@@ -33,7 +33,7 @@ Critères et poids : couverture du besoin pare-feu/OpenVPN/NAT/filtrage 30 ; co�
 | Documentation | 10 | 4 | 5 |
 | Total pondéré / 5 | 100 | 4,60 | 4,65 |
 
-Décision proposée : pfSense CE, de peu, sous réserve que l’image CE courante et les ressources disponibles soient confirmées avant installation. Les deux options couvrent OpenVPN, NAT, filtrage stateful, VLAN et journaux. pfSense CE est légèrement mieux noté pour les besoins modestes de ressources et la documentation opérationnelle ; OPNsense demeure une alternative pleinement conforme, avec gestion des sauvegardes de configuration, historique des changements et outils intégrés. La différence de score est faible et le choix doit être revu après comparaison pratique sur la VM de pare-feu.
+Décision proposée : évaluer pfSense CE en premier, sous réserve de confirmer l’image disponible. Les deux options couvrent OpenVPN, NAT, filtrage stateful, VLAN et journaux. pfSense CE a 0,05 point d’avance grâce aux notes de documentation et de ressources. Le gain de ressources reste à mesurer à périmètre égal sur la VM de pare-feu. OPNsense reste l’alternative à évaluer si pfSense CE échoue à l’essai.
 
 Solutions écartées : aucune des deux solutions autorisées par le brief n’est écartée à ce stade. Les offres payantes et les VPN tiers sont hors périmètre.
 
@@ -54,9 +54,9 @@ Critères et poids : adéquation à une maquette multi-VM 20 ; isolation et flex
 | Simplicité pour l’administrateur | 10 | 3 | 5 | 4 |
 | Documentation et maintenance | 10 | 5 | 4 | 4 |
 | Compatibilité avec un serveur dédié d’école | 10 | 5 | 2 | 2 |
-| Total pondéré / 5 | 100 | 4,65 | 4,00 | 3,90 |
+| Total pondéré / 5 | 100 | 4,65 | 3,90 | 3,90 |
 
-Décision proposée : Proxmox VE si l’équipe enseignante fournit un serveur dédié et autorise son administration. Ses bridges Linux, VLAN 802.1Q, pare-feu VM et sauvegardes conviennent mieux à une maquette avec plusieurs zones et des équipements physiques. Si aucun serveur dédié n’est disponible, revoir ce choix avant déploiement : VirtualBox devient le choix de repli pour une maquette sur poste de travail, avec réseaux Internal/Host-only/NAT et des limites à vérifier pour le raccordement au Catalyst. VMware Workstation Pro est également gratuit pour les usages commerciaux, éducatifs et personnels d’après l’annonce officielle de Broadcom, mais n’apporte pas ici un avantage déterminant par rapport à VirtualBox.
+Décision proposée : Proxmox VE si l’équipe enseignante fournit un serveur dédié et autorise son administration. Ses ponts Linux, VLAN 802.1Q et sauvegardes conviennent à une maquette avec plusieurs zones et des équipements physiques. Sur poste de travail, VirtualBox et VMware Workstation Pro sont à égalité. Évaluer VirtualBox en premier pour ses notes de ressources et de simplicité, puis vérifier le passage du trunk jusqu’au Catalyst. VMware obtient une meilleure note d’isolation et de VLAN et reste candidat si le raccordement impose de revoir le choix.
 
 Solutions écartées : aucune exclusion définitive ; le score Proxmox dépend de la disponibilité de l’hôte. Cette décision est donc conditionnelle et ne doit pas être présentée comme confirmée tant que l’affectation des ressources scolaires n’est pas connue.
 
@@ -71,8 +71,8 @@ Critères et poids : adéquation NAS et sauvegarde/restauration 20 ; protection 
 | Critère | Poids | TrueNAS CE | OpenMediaVault + Restic/rest-server | Debian + Restic/rest-server |
 |---|---:|---:|---:|---:|
 | NAS et sauvegarde/restauration | 20 | 5 | 4 | 3 |
-| Protection contre effacement/chiffrement | 20 | 4 | 5 | 5 |
-| Chiffrement et contrôle d’accès | 15 | 5 | 5 | 5 |
+| Résistance à l’effacement ou au chiffrement par un tiers | 20 | 4 | 5 | 5 |
+| Chiffrement des données et contrôle d’accès | 15 | 5 | 5 | 5 |
 | Ressources | 15 | 2 | 4 | 5 |
 | Simplicité d’exploitation | 10 | 4 | 4 | 2 |
 | Windows/Linux | 10 | 5 | 5 | 4 |
@@ -112,7 +112,7 @@ Exigences principalement concernées : V3, Q4, Q5, Q6, Q7, V8. Le courrier doit 
 
 Critères et poids : SMTP/IMAP/webmail/TLS 20 ; compatibilité avec l’annuaire 15 ; ressources 25 ; simplicité d’exploitation 15 ; maintenance/version documentée 10 ; coût/licence 5 ; documentation et sauvegarde 10. La mémoire reçoit le poids principal parce que les ressources de la maquette sont limitées.
 
-| Critère | Poids | Modoboa | Mailu 2.0 | mailcow |
+| Critère | Poids | Modoboa | Mailu 2.0 (notation initiale) | mailcow |
 |---|---:|---:|---:|---:|
 | SMTP, IMAP, webmail, TLS | 20 | 5 | 5 | 5 |
 | AD/LDAP | 15 | 4 | 3 | 5 |
@@ -123,9 +123,9 @@ Critères et poids : SMTP/IMAP/webmail/TLS 20 ; compatibilité avec l’annuaire
 | Documentation/sauvegarde | 10 | 4 | 4 | 5 |
 | Total pondéré / 5 | 100 | 4,25 | 4,15 | 4,10 |
 
-Décision proposée : Modoboa, avec une intégration LDAP à tester contre l’Active Directory de la maquette et une synchronisation des comptes traitée par procédure ou script. La documentation de la version 2.4.9 donne comme point de départ 2 CPU, 2 Go de RAM et 10 Go de disque, et indique 4 Go de RAM si l’antivirus est activé. La documentation de configuration décrit l’authentification LDAP et avertit que les changements de compte dans l’annuaire ne sont pas synchronisés automatiquement. Cela limite les ressources par rapport au minimum de 6 Gio recommandé par mailcow et garde une interface d’administration intégrée.
+Décision proposée : évaluer Modoboa en premier pour l’administration intégrée et l’authentification LDAP documentée. Tester l’intégration à Active Directory et documenter la procédure de gestion des comptes. La documentation courante indique 4 CPU, 4 Go de RAM et 10 Go de disque, contre 2 CPU et 2 Go de RAM dans la documentation consultée pour la notation initiale (voir R23). La synchronisation LDAP est optionnelle et documentée avec OpenLDAP. La note de ressources de Modoboa doit être revue avec la version évaluée.
 
-Solutions écartées : Mailu est une option légère (1 Gio sans antivirus, 3 Gio avec antivirus selon sa documentation Compose), mais la version stable documentée est 2.0 et les auteurs préviennent de tester complètement avant usage critique ; son ancienneté doit être revue avant installation. mailcow est riche, prend en charge LDAP/AD et propose plusieurs fonctions de sécurité et sauvegarde, mais sa configuration par défaut demande au moins 6 Gio + 1 Gio de swap et 20 Gio de disque hors messages ; cela le rend moins adapté à la maquette si la RAM est rare.
+Alternatives : la branche stable documentée de Mailu est 2024.06 (R24). Vérifier les ressources et l’intégration AD sur cette branche et réévaluer la note de maintenance qui portait sur 2.0. À notes égales par ailleurs, un point de plus sur ce critère mettrait Mailu à égalité avec Modoboa. mailcow prend en charge LDAP/AD et propose des fonctions de sécurité et de sauvegarde. Sa configuration par défaut demande au moins 6 Gio de RAM, 1 Gio de swap et 20 Gio de disque hors messages.
 
 Limite : aucun de ces logiciels ne garantit la remise de courrier vers les grands fournisseurs depuis le réseau simulé. La recette doit prouver la livraison entre comptes internes et vers un correspondant externe simulé. Elle ne doit pas supposer une connectivité SMTP réelle à Internet.
 
@@ -139,11 +139,11 @@ Ce schéma est une proposition d’étude, pas un plan de configuration : les in
 
 ## Résumé des choix proposés
 
-Pare-feu : pfSense CE, choix à faible marge et à confirmer selon image, ressources et expérience pratique.
-Virtualisation : Proxmox VE si hôte scolaire dédié disponible ; sinon rouvrir la matrice et retenir un hyperviseur de poste de travail.
-NAS et sauvegarde : OpenMediaVault + Restic/rest-server append-only, avec comptes de sauvegarde distincts et tests de restauration.
-Supervision : Zabbix 8.0 LTS.
-Messagerie : Modoboa, sous réserve d’un test LDAP AD et d’une validation des ressources.
+- [Pare-feu](../adr/ADR-0001-pare-feu.md) — Évaluer pfSense CE en premier, puis OPNsense si besoin.
+- [Virtualisation](../adr/ADR-0002-virtualisation.md) — Proxmox VE si l’école fournit un hôte dédié, VirtualBox en premier essai sur poste.
+- [NAS et sauvegarde](../adr/ADR-0003-nas-sauvegarde.md) — OpenMediaVault avec Restic et rest-server en mode append-only.
+- [Supervision](../adr/ADR-0004-supervision.md) — Zabbix 8.0 LTS.
+- [Messagerie](../adr/ADR-0005-messagerie.md) — Évaluer Modoboa en premier, puis arbitrer après mise à jour de la comparaison et essai LDAP.
 
 ## Présentation au client
 
