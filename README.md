@@ -9,4 +9,6 @@ Le [plan de maquette et de test](docs/maquette-et-tests.md) décrit l’environn
 
 ## Suivi du projet
 
+[Livrables des missions](livrables/)
+
 [Chronologie des travaux](docs/chronologie.md)

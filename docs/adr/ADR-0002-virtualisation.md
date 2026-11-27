@@ -29,6 +29,6 @@ Confirmer l’accès à la console, le budget CPU/RAM/disque et les interfaces p
 
 ## Références et décisions liées
 
-- [Matrice M3 de virtualisation](../missions/M3-choix-solutions.md#choix-2--virtualisation--proxmox-ve-virtualbox-vmware-workstation-pro).
+- [Matrice M3 de virtualisation](../../livrables/M3-choix-solutions.md#choix-2--virtualisation--proxmox-ve-virtualbox-vmware-workstation-pro).
 - [ADR-0001 – Pare-feu](ADR-0001-pare-feu.md) pour les interfaces et VLAN et [ADR-0003 – Sauvegarde](ADR-0003-nas-sauvegarde.md) pour le stockage dédié.
 - [Guide Proxmox VE](https://pve.proxmox.com/pve-docs/pve-admin-guide.pdf), [manuel VirtualBox](https://download.virtualbox.org/virtualbox/7.2.10/UserManual.pdf) et [licence de VMware Workstation Pro](https://blogs.vmware.com/cloud-foundation/2024/11/11/vmware-fusion-and-workstation-are-now-free-for-all-users/).

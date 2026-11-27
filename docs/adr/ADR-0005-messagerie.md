@@ -29,6 +29,6 @@ Revoir les notes de ressources et de maintenance avec les versions évaluées. T
 
 ## Références et décisions liées
 
-- [Matrice M3 de messagerie](../missions/M3-choix-solutions.md#choix-5--messagerie--modoboa-mailu-mailcow) et [dossier M2, R23 à R25](../missions/M2-dossier-documentaire.md#messagerie).
+- [Matrice M3 de messagerie](../../livrables/M3-choix-solutions.md#choix-5--messagerie--modoboa-mailu-mailcow) et [dossier M2, R23 à R25](../../livrables/M2-dossier-documentaire.md#messagerie).
 - [ADR-0001 – Pare-feu](ADR-0001-pare-feu.md) pour les flux autorisés et [ADR-0003 – Sauvegarde](ADR-0003-nas-sauvegarde.md) pour les exports et la restauration.
 - [Prérequis Modoboa](https://modoboa.readthedocs.io/en/latest/installation/requirements.html), [configuration LDAP Modoboa](https://modoboa.readthedocs.io/en/latest/configuration.html#ldap), [version stable Mailu](https://mailu.io/2024.06/setup.html#pick-a-mailu-version) et [prérequis mailcow](https://docs.mailcow.email/getstarted/prerequisite-system/).

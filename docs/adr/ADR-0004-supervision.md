@@ -29,6 +29,6 @@ Vérifier la collecte sur les équipements prêtés et les serveurs représentat
 
 ## Références et décisions liées
 
-- [Matrice M3 de supervision](../missions/M3-choix-solutions.md#choix-4--supervision--zabbix-prometheus-avec-grafana-nagios-core) et [dossier M2, R20 à R22](../missions/M2-dossier-documentaire.md#supervision).
+- [Matrice M3 de supervision](../../livrables/M3-choix-solutions.md#choix-4--supervision--zabbix-prometheus-avec-grafana-nagios-core) et [dossier M2, R20 à R22](../../livrables/M2-dossier-documentaire.md#supervision).
 - [ADR-0001 – Pare-feu](ADR-0001-pare-feu.md) pour les flux de collecte et [ADR-0003 – Sauvegarde](ADR-0003-nas-sauvegarde.md) pour la base et la configuration.
 - [Politique de support Zabbix](https://www.zabbix.com/life_cycle_and_release_policy) et [documentation SNMP](https://www.zabbix.com/documentation/8.0/en/manual/config/items/itemtypes/snmp).

@@ -29,6 +29,6 @@ Confirmer le stockage disponible, le temps de sauvegarde sur la plage 20 h–7 h
 
 ## Références et décisions liées
 
-- [Matrice M3 du NAS et des sauvegardes](../missions/M3-choix-solutions.md#choix-3--nas-et-sauvegarde--truenas-ce-openmediavault-avec-restic-debian-avec-restic) et [dossier M2, R13 à R19](../missions/M2-dossier-documentaire.md#stockage-et-sauvegardes).
+- [Matrice M3 du NAS et des sauvegardes](../../livrables/M3-choix-solutions.md#choix-3--nas-et-sauvegarde--truenas-ce-openmediavault-avec-restic-debian-avec-restic) et [dossier M2, R13 à R19](../../livrables/M2-dossier-documentaire.md#stockage-et-sauvegardes).
 - [ADR-0002 – Virtualisation](ADR-0002-virtualisation.md) pour le stockage et [ADR-0005 – Messagerie](ADR-0005-messagerie.md) pour les boîtes à restaurer.
 - [Maintenance Restic en mode append-only](https://restic.readthedocs.io/en/stable/060_forget.html#security-considerations-in-append-only-mode) et [sauvegarde de l’état système AD](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-backing-up-system-state).

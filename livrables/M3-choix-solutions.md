@@ -139,11 +139,11 @@ Ce schéma est une proposition d’étude, pas un plan de configuration : les in
 
 ## Résumé des choix proposés
 
-- [Pare-feu](../adr/ADR-0001-pare-feu.md) — Évaluer pfSense CE en premier, puis OPNsense si besoin.
-- [Virtualisation](../adr/ADR-0002-virtualisation.md) — Proxmox VE si l’école fournit un hôte dédié, VirtualBox en premier essai sur poste.
-- [NAS et sauvegarde](../adr/ADR-0003-nas-sauvegarde.md) — OpenMediaVault avec Restic et rest-server en mode append-only.
-- [Supervision](../adr/ADR-0004-supervision.md) — Zabbix 8.0 LTS.
-- [Messagerie](../adr/ADR-0005-messagerie.md) — Évaluer Modoboa en premier, puis arbitrer après mise à jour de la comparaison et essai LDAP.
+- [Pare-feu](../docs/adr/ADR-0001-pare-feu.md) — Évaluer pfSense CE en premier, puis OPNsense si besoin.
+- [Virtualisation](../docs/adr/ADR-0002-virtualisation.md) — Proxmox VE si l’école fournit un hôte dédié, VirtualBox en premier essai sur poste.
+- [NAS et sauvegarde](../docs/adr/ADR-0003-nas-sauvegarde.md) — OpenMediaVault avec Restic et rest-server en mode append-only.
+- [Supervision](../docs/adr/ADR-0004-supervision.md) — Zabbix 8.0 LTS.
+- [Messagerie](../docs/adr/ADR-0005-messagerie.md) — Évaluer Modoboa en premier, puis arbitrer après mise à jour de la comparaison et essai LDAP.
 
 ## Présentation au client
 

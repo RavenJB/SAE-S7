@@ -28,6 +28,6 @@ Vérifier l’image CE, le trunk VLAN, l’isolation des zones, l’export des j
 
 ## Références et décisions liées
 
-- [Matrice M3 du pare-feu](../missions/M3-choix-solutions.md#choix-1--pare-feu--opnsense-ou-pfsense-ce) et [architecture réseau proposée](../missions/M3-choix-solutions.md#proposition-darchitecture-réseau-liée-à-ces-choix).
+- [Matrice M3 du pare-feu](../../livrables/M3-choix-solutions.md#choix-1--pare-feu--opnsense-ou-pfsense-ce) et [architecture réseau proposée](../../livrables/M3-choix-solutions.md#proposition-darchitecture-réseau-liée-à-ces-choix).
 - [ADR-0002 – Virtualisation](ADR-0002-virtualisation.md) pour le raccordement des VLAN et [ADR-0004 – Supervision](ADR-0004-supervision.md) pour le suivi du pare-feu.
 - [Dimensionnement pfSense](https://docs.netgate.com/pfsense/en/latest/hardware/size.html), [minimums pfSense](https://docs.netgate.com/pfsense/en/latest/hardware/minimum-requirements.html), [dimensionnement OPNsense](https://docs.opnsense.org/manual/hardware.html) et [VPN OPNsense](https://docs.opnsense.org/manual/vpnet.html).

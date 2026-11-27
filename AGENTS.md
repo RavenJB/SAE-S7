@@ -2,6 +2,10 @@
 
 Before working on the SAE project, read [the project brief](docs/SAE_Cyber_Valdore_Services.md). It is the source of truth for project context, requirements, constraints, deliverables, and validation criteria. Follow explicit requirements and constraints. Treat examples and choices left open by the brief as design guidance. Consult [the original PDF](SAE_Cyber_Valdore_Services.pdf) for its layout and page numbers.
 
+## Project documents
+
+Store mission deliverables in [`livrables/`](livrables/). Reserve `docs/` for agent-facing project documentation such as the brief, ADRs, and working guides.
+
 ## Architecture Decision Records
 
 Create an Architecture Decision Record (ADR) whenever choosing a technology to achieve a specific goal. Document the decision, the alternatives considered, and the rationale; for example, choosing OpenVPN for remote workers instead of a paid VPN service requires an ADR.

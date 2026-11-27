@@ -1,6 +1,6 @@
 # M10 – Fiche du premier test de la maquette
 
-Configuration proposée pour le [premier scénario](../maquette-et-tests.md#premier-scénario-à-reproduire). Utiliser trois réseaux virtuels isolés et des comptes fictifs. Le pare-feu sert de passerelle entre les VLAN.
+Configuration proposée pour le [premier scénario](../docs/maquette-et-tests.md#premier-scénario-à-reproduire). Utiliser trois réseaux virtuels isolés et des comptes fictifs. Le pare-feu sert de passerelle entre les VLAN.
 
 ## Adressage et rôles
 
@@ -28,4 +28,4 @@ Domaine AD proposé `ad.valdore-services.fr` (NetBIOS `VALDORE`). `DC-01` héber
 | Créer le compte standard `test.m10` dans AD. Joindre le poste au domaine avec un compte autorisé, redémarrer et ouvrir une session avec `test.m10`. | `whoami` affiche `valdore\test.m10`. Conserver la sortie. |
 | Tester `Test-NetConnection 10.20.40.1 -Port 443` depuis le VLAN 10. | `TcpTestSucceeded` vaut `False`. Conserver la sortie et le blocage dans le journal du pare-feu. |
 
-Source dans le sujet · [§5.11 — Plan de déploiement et cahier de recette](../SAE_Cyber_Valdore_Services.md#511-mission-m10--planifier-déployer-et-recetter-bc-43) et [§4.4 — Critères de validation](../SAE_Cyber_Valdore_Services.md#44-critères-de-validation).
+Source dans le sujet · [§5.11 — Plan de déploiement et cahier de recette](../docs/SAE_Cyber_Valdore_Services.md#511-mission-m10--planifier-déployer-et-recetter-bc-43) et [§4.4 — Critères de validation](../docs/SAE_Cyber_Valdore_Services.md#44-critères-de-validation).
