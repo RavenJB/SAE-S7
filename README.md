@@ -7,6 +7,8 @@ Les [décisions d’architecture](docs/adr/README.md) suivent le skill [architec
 
 Le [plan de maquette et de test](docs/maquette-et-tests.md) décrit l’environnement commun, les essais locaux et les points à valider avant le développement.
 
+La machine physique utilisée pour Windows Server est `server-42`.
+
 ## Livrables des missions
 
 - [M2 – Dossier documentaire commenté](livrables/M2-dossier-documentaire.md)
