@@ -16,6 +16,8 @@ When a change has a GitHub issue, append its number to the Conventional Commit s
 
 ## Agent skills
 
+Before starting a task, check the [README](README.md) for skill requirements. Verify that the required skills and skill packs are available, then load and follow the skills that apply to the task. If a required skill or skill pack is unavailable, stop the task and tell the user what to install, using the link in the README.
+
 ### Issue tracker
 
 GitHub Issues is the source of truth for tickets. Trello provides a visual view of their progress. See `docs/agents/issue-tracker.md`.
