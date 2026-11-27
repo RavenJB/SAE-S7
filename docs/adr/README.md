@@ -1,6 +1,6 @@
 # Décisions d’architecture
 
-Les ADR documentent les décisions de la maquette Valdoré Services. Les critères pondérés et les notes détaillées figurent dans le [comparatif M3](../missions/M3-choix-solutions.md). L’équipe arbitre les propositions dans le cadre de la [mission M3](https://github.com/RavenJB/SAE-S7/issues/3).
+Les ADR documentent les décisions de la maquette Valdoré Services. Les critères pondérés et les notes détaillées figurent dans le [comparatif M3](../../livrables/M3-choix-solutions.md). L’équipe arbitre les propositions dans le cadre de la [mission M3](https://github.com/RavenJB/SAE-S7/issues/3).
 
 | ADR | Proposition | Statut | Date de proposition |
 | --- | --- | --- | --- |

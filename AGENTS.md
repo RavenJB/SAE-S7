@@ -2,6 +2,10 @@
 
 Before working on the SAE project, read [the project brief](docs/SAE_Cyber_Valdore_Services.md). It is the source of truth for project context, requirements, constraints, deliverables, and validation criteria. Follow explicit requirements and constraints. Treat examples and choices left open by the brief as design guidance. Consult [the original PDF](SAE_Cyber_Valdore_Services.pdf) for its layout and page numbers.
 
+## Project documents
+
+Store mission deliverables in [`livrables/`](livrables/). Reserve `docs/` for agent-facing project documentation such as the brief, ADRs, and working guides.
+
 ## Architecture Decision Records
 
 Create an Architecture Decision Record (ADR) whenever choosing a technology to achieve a specific goal. Document the decision, the alternatives considered, and the rationale; for example, choosing OpenVPN for remote workers instead of a paid VPN service requires an ADR.
@@ -10,7 +14,13 @@ Create an Architecture Decision Record (ADR) whenever choosing a technology to a
 
 At the end of each work session, add or update that day's entry in [docs/chronologie.md](docs/chronologie.md). Summarize only the work completed that day, without attributing it to anyone.
 
+## Commits
+
+When a change has a GitHub issue, append its number to the Conventional Commit subject, as in `docs(m10): préparer le premier test de la maquette #10`.
+
 ## Agent skills
+
+Before starting a task, check the [README](README.md) for skill requirements. Verify that the required skills and skill packs are available, then load and follow the skills that apply to the task. If a required skill or skill pack is unavailable, stop the task and tell the user what to install, using the link in the README.
 
 ### Issue tracker
 
