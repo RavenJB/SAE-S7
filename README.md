@@ -7,8 +7,13 @@ Les [décisions d’architecture](docs/adr/README.md) suivent le skill [architec
 
 Le [plan de maquette et de test](docs/maquette-et-tests.md) décrit l’environnement commun, les essais locaux et les points à valider avant le développement.
 
-## Suivi du projet
+## Livrables des missions
 
-[Livrables des missions](livrables/)
+- [M2 – Dossier documentaire commenté](livrables/M2-dossier-documentaire.md)
+- [M3 – Comparaison et choix des solutions](livrables/M3-choix-solutions.md)
+- [M9 – Suivi du projet et échanges avec le client](livrables/M9-suivi-client.md)
+- [M10 – Fiche du premier test de la maquette](livrables/M10-premier-test-maquette.md)
+
+## Suivi du projet
 
 [Chronologie des travaux](docs/chronologie.md)
