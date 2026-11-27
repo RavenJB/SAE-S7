@@ -10,6 +10,10 @@ Create an Architecture Decision Record (ADR) whenever choosing a technology to a
 
 At the end of each work session, add or update that day's entry in [docs/chronologie.md](docs/chronologie.md). Summarize only the work completed that day, without attributing it to anyone.
 
+## Commits
+
+When a change has a GitHub issue, append its number to the Conventional Commit subject, as in `docs(m10): préparer le premier test de la maquette #10`.
+
 ## Agent skills
 
 ### Issue tracker
